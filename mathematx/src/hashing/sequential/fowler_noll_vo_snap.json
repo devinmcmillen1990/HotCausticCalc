@@ -1,0 +1,50 @@
+[
+    {
+        "title": "FNV-1 - Empty Input",
+        "input": "",
+        "expected_32bit": 2166136261,
+        "expected_64bit": 14695981039346656037
+    },
+    {
+        "title": "FNV-1 - Simple String",
+        "input": "Hello",
+        "expected_32bit": 925285703,
+        "expected_64bit": 18029688879280032679
+    },
+    {
+        "title": "FNV-1 - Long Input",
+        "input": "The quick brown fox jumps over the lazy dog",
+        "expected_32bit": 3922226286,
+        "expected_64bit": 12156045600678443726
+    },
+    {
+        "title": "FNV-1 - Repeated Characters",
+        "input": "aaaaaa",
+        "expected_32bit": 2998282615,
+        "expected_64bit": 13178457735548959031
+    },
+    {
+        "title": "FNV-1a - Empty Input",
+        "input": "",
+        "expected_32bit": 2166136261,
+        "expected_64bit": 14695981039346656037
+    },
+    {
+        "title": "FNV-1a - Simple String",
+        "input": "Hello",
+        "expected_32bit": 925285703,
+        "expected_64bit": 18029688879280032679
+    },
+    {
+        "title": "FNV-1a - Long Input",
+        "input": "The quick brown fox jumps over the lazy dog",
+        "expected_32bit": 3922226286,
+        "expected_64bit": 12156045600678443726
+    },
+    {
+        "title": "FNV-1a - Repeated Characters",
+        "input": "aaaaaa",
+        "expected_32bit": 2998282615,
+        "expected_64bit": 13178457735548959031
+    }
+]

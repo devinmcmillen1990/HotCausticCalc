@@ -1,0 +1,60 @@
+[
+    {
+        "title": "len() - empty",
+        "input": {
+            "data": []
+        },
+        "expected_output": {
+            "length": 0
+        }
+    },
+    {
+        "title": "len() - wtih data",
+        "input": {
+            "data": [1,2,3]
+        },
+        "expected_output": {
+            "length": 3
+        }
+    },
+    {
+        "title": "get() - empty index 0",
+        "input": {
+            "data": [],
+            "get_index": 0
+        },
+        "expected_output": {
+            "result": null
+        }
+    },
+    {
+        "title": "get() - empty index 5",
+        "input": {
+            "data": [],
+            "get_index": 5
+        },
+        "expected_output": {
+            "result": null
+        }
+    },
+    {
+        "title": "get() - with data in bounds",
+        "input": {
+            "data": [1,2,3],
+            "get_index": 0
+        },
+        "expected_output": {
+            "result": 1
+        }
+    },
+    {
+        "title": "get() - with data out of bounds",
+        "input": {
+            "data": [1,2,3],
+            "get_index": 5
+        },
+        "expected_output": {
+            "result": null
+        }
+    }
+]

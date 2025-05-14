@@ -1,4 +1,4 @@
-use crate::hashing::fowler_noll_vo::fowler_noll_vo_1a::{hash_fnv1a_x32, hash_fnv1a_x64};
+use crate::hashing::fowler_noll_vo_1a::fowler_noll_vo_1a::{hash_fnv1a_x32, hash_fnv1a_x64};
 use crate::utils::snapshot::loader::load_snapshots;
 
 /***
@@ -7,7 +7,7 @@ use crate::utils::snapshot::loader::load_snapshots;
  */
 #[test]
 fn run_tests() {
-    let snapshots = load_snapshots("src/hashing/fowler_noll_vo/fowler_noll_vo_1_snap.json");
+    let snapshots = load_snapshots("src/hashing/fowler_noll_vo_1a/fowler_noll_vo_1a_snap.json");
 
     for snapshot in snapshots.iter() {
         // Arrange
@@ -44,9 +44,9 @@ use std::thread;
 
 #[test]
 fn thread_safety_test() {
-    let snapshots = load_snapshots("src/hashing/fowler_noll_vo/fowler_noll_vo_1_snap.json");
+    let snapshots = load_snapshots("src/hashing/fowler_noll_vo_1a/fowler_noll_vo_1a_snap.json");
     
-    let num_threads = 10;
+    let num_threads = 100;
     let barrier = Arc::new(Barrier::new(num_threads));
     let snapshots = Arc::new(snapshots);
 

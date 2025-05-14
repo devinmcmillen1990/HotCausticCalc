@@ -1,3 +1,6 @@
+// TODO: Move into /sequential/
+
+
 use super::structs::Vector;
 use std::ops;
 

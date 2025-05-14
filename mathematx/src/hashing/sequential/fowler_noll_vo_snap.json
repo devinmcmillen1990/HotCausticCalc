@@ -1,50 +1,50 @@
 [
     {
-        "title": "FNV-1 - Empty Input",
+        "title": "hash Empty Input",
         "input": "",
         "expected_32bit": 2166136261,
         "expected_64bit": 14695981039346656037
     },
     {
-        "title": "FNV-1 - Simple String",
+        "title": "hash Simple String",
         "input": "Hello",
         "expected_32bit": 925285703,
         "expected_64bit": 18029688879280032679
     },
     {
-        "title": "FNV-1 - Long Input",
-        "input": "The quick brown fox jumps over the lazy dog",
-        "expected_32bit": 3922226286,
-        "expected_64bit": 12156045600678443726
+        "title": "hash med. Input",
+        "input": "The quick brown fox jumps over the lazy dog. And Ate an entire fish head.",
+        "expected_32bit": 3454715527,
+        "expected_64bit": 117815670341302887
     },
     {
-        "title": "FNV-1 - Repeated Characters",
+        "title": "hash Repeated Characters",
         "input": "aaaaaa",
         "expected_32bit": 2998282615,
         "expected_64bit": 13178457735548959031
     },
     {
-        "title": "FNV-1a - Empty Input",
-        "input": "",
-        "expected_32bit": 2166136261,
-        "expected_64bit": 14695981039346656037
+        "title": "hash Numeric Data (32-bit Integer)",
+        "input": "1234567890",
+        "expected_32bit": 3797039762,
+        "expected_64bit": 1126012111659584914
     },
     {
-        "title": "FNV-1a - Simple String",
-        "input": "Hello",
-        "expected_32bit": 925285703,
-        "expected_64bit": 18029688879280032679
+        "title": "hash Numeric Data (64-bit Integer)",
+        "input": "98765432109876543210",
+        "expected_32bit": 2862463117,
+        "expected_64bit": 18164387154216143981
     },
     {
-        "title": "FNV-1a - Long Input",
-        "input": "The quick brown fox jumps over the lazy dog",
-        "expected_32bit": 3922226286,
-        "expected_64bit": 12156045600678443726
+        "title": "hash Collision Example 1",
+        "input": "a",
+        "expected_32bit": 84696446,
+        "expected_64bit": 12638153115695167422
     },
     {
-        "title": "FNV-1a - Repeated Characters",
-        "input": "aaaaaa",
-        "expected_32bit": 2998282615,
-        "expected_64bit": 13178457735548959031
+        "title": "hash Collision Example 2",
+        "input": "A",
+        "expected_32bit": 84696414,
+        "expected_64bit": 12638153115695167390
     }
 ]

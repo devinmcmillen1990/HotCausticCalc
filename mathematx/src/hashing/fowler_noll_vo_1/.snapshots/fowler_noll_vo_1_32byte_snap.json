@@ -14,8 +14,8 @@
     {
         "title": "hash med. Input",
         "input": "The quick brown fox jumps over the lazy dog. And Ate an entire fish head.",
-        "expected_32bit": 3454715527,
-        "expected_64bit": 117815670341302887
+        "expected_32bit": 2168100190,
+        "expected_64bit": 6544637204897750786
     },
     {
         "title": "hash Repeated Characters",

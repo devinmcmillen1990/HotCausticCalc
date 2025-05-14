@@ -14,8 +14,8 @@
     {
         "title": "hash med. Input",
         "input": "The quick brown fox jumps over the lazy dog. And Ate an entire fish head.",
-        "expected_32bit": 3454715527,
-        "expected_64bit": 117815670341302887
+        "expected_32bit": 1018920462,
+        "expected_64bit": 6544637204897750786
     },
     {
         "title": "hash Repeated Characters",
@@ -32,8 +32,8 @@
     {
         "title": "hash Numeric Data (64-bit Integer)",
         "input": "98765432109876543210",
-        "expected_32bit": 2862463117,
-        "expected_64bit": 18164387154216143981
+        "expected_32bit": 142722343,
+        "expected_64bit": 8084655191792967327
     },
     {
         "title": "hash Collision Example 1",

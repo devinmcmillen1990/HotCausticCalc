@@ -1,27 +1,29 @@
-use crate::hashing::fowler_noll_vo_1a::fowler_noll_vo_1a::{hash_fnv1a_x32, hash_fnv1a_x64};
 use crate::utils::snapshot::loader::load_snapshots;
+use std::{
+    sync::{Arc, Barrier},
+    thread,
+};
 
-/***
- * NOTE: Snapshots don't contain massive dataset entries like massive strings, because this algorithm is not intended for 
- *          that functionality.
- */
-#[test]
-fn run_tests() {
-    let snapshots = load_snapshots("src/hashing/fowler_noll_vo_1a/fowler_noll_vo_1a_snap.json");
+#[cfg(test)]
+pub fn run_hash_tests(
+    snapshot_path: &str,
+    hash_32_func: fn(&[u8]) -> u32,
+    hash_64_func: fn(&[u8]) -> u64,
+) {
+    let snapshots = load_snapshots(snapshot_path);
 
     for snapshot in snapshots.iter() {
         // Arrange
         let title = snapshot["title"].as_str().unwrap();
         let input = snapshot["input"].as_str().unwrap().as_bytes();
-
         let expected_32bit = snapshot["expected_32bit"].as_u64().unwrap() as u32;
         let expected_64bit = snapshot["expected_64bit"].as_u64().unwrap() as u64;
 
         // Act
         println!("Running test: {}", title);
 
-        let hash_32bit = hash_fnv1a_x32(input);
-        let hash_64bit = hash_fnv1a_x64(input);
+        let hash_32bit = hash_32_func(input);
+        let hash_64bit = hash_64_func(input);
 
         // Assert
         assert_eq!(
@@ -29,6 +31,7 @@ fn run_tests() {
             "32-bit hash mismatch for {}",
             title
         );
+
         assert_eq!(
             hash_64bit, expected_64bit,
             "64-bit hash mismatch for {}",
@@ -37,16 +40,15 @@ fn run_tests() {
     }
 }
 
-
-
-use std::sync::{Arc, Barrier};
-use std::thread;
-
-#[test]
-fn thread_safety_test() {
-    let snapshots = load_snapshots("src/hashing/fowler_noll_vo_1a/fowler_noll_vo_1a_snap.json");
-    
-    let num_threads = 100;
+#[cfg(test)]
+pub fn run_thread_safety_test(
+    snapshot_path: &str,
+    hash_32_func: fn(&[u8]) -> u32,
+    hash_64_func: fn(&[u8]) -> u64,
+    number_of_threads: usize,
+) {
+    let snapshots = load_snapshots(snapshot_path);
+    let num_threads = number_of_threads;
     let barrier = Arc::new(Barrier::new(num_threads));
     let snapshots = Arc::new(snapshots);
 
@@ -65,12 +67,20 @@ fn thread_safety_test() {
                 let expected_32bit = snapshot["expected_32bit"].as_u64().unwrap() as u32;
                 let expected_64bit = snapshot["expected_64bit"].as_u64().unwrap() as u64;
 
-                // Execute FNV-1
-                let hash_32bit = hash_fnv1a_x32(input);
-                let hash_64bit = hash_fnv1a_x64(input);
+                // Execute the hash functions
+                let hash_32bit = hash_32_func(input);
+                let hash_64bit = hash_64_func(input);
 
-                assert_eq!(hash_32bit, expected_32bit, "32-bit FNV-1 mismatch in thread {}", i);
-                assert_eq!(hash_64bit, expected_64bit, "64-bit FNV-1 mismatch in thread {}", i);
+                assert_eq!(
+                    hash_32bit, expected_32bit,
+                    "32-bit hash mismatch in thread {}",
+                    i
+                );
+                assert_eq!(
+                    hash_64bit, expected_64bit,
+                    "64-bit hash mismatch in thread {}",
+                    i
+                );
             }
         });
 

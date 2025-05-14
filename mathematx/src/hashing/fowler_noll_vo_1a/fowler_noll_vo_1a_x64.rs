@@ -4,35 +4,17 @@ use crate::hashing::fowler_noll_vo_utils::{
         SIZE_8_BYTES,
     },
     fowler_noll_vo_x64_hash::hash_x64_chunks,
-    x64_prefetch::prefetch,
 };
 
-/*
-    FNV-1 Pseudocode
-        1. Initialize hash to OFFSET_BASIS.
-        2. For each byte in the data:
-            - Multiply hash by FNV_PRIME.
-            - XOR hash with the byte.
-        3. Return the resulting hash value.
-
-    NOTE: Thread safe because it takes an immutable reference. And since this algorithm is not intended for large datasets, there
-            is no need to consider dealing with mutable byte-arrays like we may have to use for more advanced hashing algorithms.
-*/
-
-/// Fowler-Noll-Vo 1 Hash (64-bit)
-pub fn hash_fnv1_x64(data: &[u8]) -> u64 {
-    let mut hash = FNV_X64_OFFSET_BASIS; // Initialize hash to OFFSET_BASIS
-
+/// Fowler-Noll-Vo 1a Hash (64-bit)
+pub fn hash_fnv1a_x64(data: &[u8]) -> u64 {
     if data.is_empty() {
-        return hash;
+        return FNV_X64_OFFSET_BASIS;
     }
 
-    for &byte in data {
-        #[cfg(target_arch = "x86_64")]
-        unsafe {
-            prefetch(&byte);
-        }
+    let mut hash = FNV_X64_OFFSET_BASIS; // Initialize hash to OFFSET_BASIS
 
+    for &byte in data {
         hash = hash.wrapping_mul(FNV_X64_PRIME); // Multiply hash with FNV_Prime (64-bit)
         hash ^= byte as u64; // XOR hash with the byte iteration
     }
@@ -40,7 +22,7 @@ pub fn hash_fnv1_x64(data: &[u8]) -> u64 {
     hash // Return hash
 }
 
-pub fn hash_fnv1_x64_8byte_chunks(data: &[u8]) -> u64 {
+pub fn hash_fnv1a_x64_8byte_chunks(data: &[u8]) -> u64 {
     if data.is_empty() {
         return FNV_X64_OFFSET_BASIS;
     }
@@ -50,7 +32,7 @@ pub fn hash_fnv1_x64_8byte_chunks(data: &[u8]) -> u64 {
     hash
 }
 
-pub fn hash_fnv1_x64_16byte_chunks(data: &[u8]) -> u64 {
+pub fn hash_fnv1a_x64_16byte_chunks(data: &[u8]) -> u64 {
     if data.is_empty() {
         return FNV_X64_OFFSET_BASIS;
     }
@@ -60,7 +42,7 @@ pub fn hash_fnv1_x64_16byte_chunks(data: &[u8]) -> u64 {
     hash
 }
 
-pub fn hash_fnv1_x64_32byte_chunks(data: &[u8]) -> u64 {
+pub fn hash_fnv1a_x64_32byte_chunks(data: &[u8]) -> u64 {
     if data.is_empty() {
         return FNV_X64_OFFSET_BASIS;
     }
@@ -70,7 +52,7 @@ pub fn hash_fnv1_x64_32byte_chunks(data: &[u8]) -> u64 {
     hash
 }
 
-pub fn hash_fnv1_x64_64byte_chunks(data: &[u8]) -> u64 {
+pub fn hash_fnv1a_x64_64byte_chunks(data: &[u8]) -> u64 {
     if data.is_empty() {
         return FNV_X64_OFFSET_BASIS;
     }

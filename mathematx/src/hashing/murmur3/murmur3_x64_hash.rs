@@ -53,10 +53,11 @@ fn process_remainder(hash: &mut u64, remainder: &[u8]) {
     let mut tail: u64 = 0;
 
     for (i, &byte) in remainder.iter().enumerate() {
-        if i >= 8 {
+        // this has to do this the byte size because (8 * 8 == 64) and anything larger than (i == 7) will cause a shift overflow
+        if i > 7 {
             break;
         }
-        
+
         tail |= (byte as u64) << (i * 8);
     }
 

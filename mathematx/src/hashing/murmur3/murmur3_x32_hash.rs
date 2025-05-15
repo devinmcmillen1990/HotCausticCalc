@@ -48,8 +48,7 @@ fn process_chunks(byte_size: usize, hash: &mut u32, chunks: std::slice::ChunksEx
 fn process_remainder(hash: &mut u32, remainder: &[u8]) {
     let mut tail = 0;
     for (i, &byte) in remainder.iter().enumerate() {
-        // TODO: Double check this because it was added due to an overflow exception. 
-        //          Double check that this is the correct value.
+        // this has to do this the byte size because (8 * 4 == 32) and anything larger than (i == 3) will cause a shift overflow
         if i > 3 {
             break;
         }

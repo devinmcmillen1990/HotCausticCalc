@@ -8,3 +8,5 @@ mod murmur3_constants;
 pub mod murmur3_tests_assertions;
 #[cfg(test)]
 mod murmur3_tests_sync;
+#[cfg(test)]
+mod murmur3_tests_async;

@@ -1,4 +1,10 @@
-use crate::hashing::fowler_noll_vo_utils::{fowler_noll_vo_constants::{FNV_X32_OFFSET_BASIS, FNV_X32_PRIME, SIZE_16_BYTES, SIZE_32_BYTES, SIZE_4_BYTES, SIZE_8_BYTES}, fowler_noll_vo_x32_hash::hash_x32_chunks};
+use crate::{
+    hashing::fowler_noll_vo_utils::{
+        fowler_noll_vo_constants::{FNV_X32_OFFSET_BASIS, FNV_X32_PRIME},
+        fowler_noll_vo_x32_hash::hash_x32_chunks,
+    },
+    utils::constants::chunk_sizes::{SIZE_16_BYTES, SIZE_32_BYTES, SIZE_4_BYTES, SIZE_8_BYTES},
+};
 
 /*
     FNV-1a Pseudocode

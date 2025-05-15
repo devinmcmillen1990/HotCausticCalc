@@ -1,9 +1,9 @@
-use crate::hashing::fowler_noll_vo_utils::{
-    fowler_noll_vo_constants::{
-        FNV_X64_OFFSET_BASIS, FNV_X64_PRIME, SIZE_16_BYTES, SIZE_32_BYTES, SIZE_64_BYTES,
-        SIZE_8_BYTES,
+use crate::{
+    hashing::fowler_noll_vo_utils::{
+        fowler_noll_vo_constants::{FNV_X64_OFFSET_BASIS, FNV_X64_PRIME},
+        fowler_noll_vo_x64_hash::hash_x64_chunks,
     },
-    fowler_noll_vo_x64_hash::hash_x64_chunks,
+    utils::constants::chunk_sizes::{SIZE_16_BYTES, SIZE_32_BYTES, SIZE_64_BYTES, SIZE_8_BYTES},
 };
 
 /// Fowler-Noll-Vo 1a Hash (64-bit)

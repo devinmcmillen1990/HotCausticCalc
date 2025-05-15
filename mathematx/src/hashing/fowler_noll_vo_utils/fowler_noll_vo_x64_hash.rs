@@ -1,6 +1,10 @@
-use super::fowler_noll_vo_constants::{FNV_X64_PRIME, SIZE_16_BYTES, SIZE_32_BYTES, SIZE_8_BYTES};
-use crate::hashing::fowler_noll_vo_utils::x64_prefetch::prefetch;
+use super::fowler_noll_vo_constants::FNV_X64_PRIME;
+use crate::utils::{
+    constants::chunk_sizes::{SIZE_16_BYTES, SIZE_32_BYTES, SIZE_8_BYTES},
+    prefetch::x64_prefetch::prefetch,
+};
 
+// TODO: Replace the duplication with a nice for loop
 pub fn hash_x64_chunks(data: &[u8], hash: &mut u64, byte_size: usize) {
     let chunks = data.chunks_exact(byte_size);
     let remainder = chunks.remainder();

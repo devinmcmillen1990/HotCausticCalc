@@ -6,9 +6,3 @@ pub const FNV_X64_OFFSET_BASIS: u64 = 0xcbf29ce484222325;
 // Used to help provide beter disperse the hash values throughout the n-bit hash space.
 pub const FNV_X32_PRIME: u32 = 0x01000193;
 pub const FNV_X64_PRIME: u64 = 0x100000001b3;
-
-pub const SIZE_4_BYTES: usize = 4;
-pub const SIZE_8_BYTES: usize = 8;
-pub const SIZE_16_BYTES: usize = 16;
-pub const SIZE_32_BYTES: usize = 32;
-pub const SIZE_64_BYTES: usize = 64;

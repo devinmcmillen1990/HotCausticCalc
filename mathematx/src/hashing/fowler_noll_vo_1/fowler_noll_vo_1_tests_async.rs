@@ -1,10 +1,10 @@
 use crate::hashing::fowler_noll_vo_1::fowler_noll_vo_1_x32::{
-    hash_fnv1_x32, hash_fnv1_x32_16byte_chunks, hash_fnv1_x32_32byte_chunks,
-    hash_fnv1_x32_4byte_chunks, hash_fnv1_x32_8byte_chunks,
+    fnv1_x32, fnv1_x32_16byte_chunks, fnv1_x32_32byte_chunks,
+    fnv1_x32_4byte_chunks, fnv1_x32_8byte_chunks,
 };
 use crate::hashing::fowler_noll_vo_1::fowler_noll_vo_1_x64::{
-    hash_fnv1_x64, hash_fnv1_x64_16byte_chunks, hash_fnv1_x64_32byte_chunks,
-    hash_fnv1_x64_64byte_chunks, hash_fnv1_x64_8byte_chunks,
+    fnv1_x64, fnv1_x64_16byte_chunks, fnv1_x64_32byte_chunks,
+    fnv1_x64_64byte_chunks, fnv1_x64_8byte_chunks,
 };
 use crate::hashing::fowler_noll_vo_utils::fowler_noll_vo_test_assertions::run_thread_safety_test;
 
@@ -19,8 +19,8 @@ const TEST_THREAD_COUNT: usize = 100;
 fn thread_safety_base_test() {
     run_thread_safety_test(
         "src/hashing/fowler_noll_vo_1/.snapshots/fowler_noll_vo_1_base_snap.json",
-        hash_fnv1_x32,
-        hash_fnv1_x64,
+        fnv1_x32,
+        fnv1_x64,
         TEST_THREAD_COUNT,
     );
 }
@@ -29,8 +29,8 @@ fn thread_safety_base_test() {
 fn thread_safety_4byte_test() {
     run_thread_safety_test(
         "src/hashing/fowler_noll_vo_1/.snapshots/fowler_noll_vo_1_4byte_snap.json",
-        hash_fnv1_x32_4byte_chunks,
-        hash_fnv1_x64,
+        fnv1_x32_4byte_chunks,
+        fnv1_x64,
         TEST_THREAD_COUNT,
     );
 }
@@ -39,8 +39,8 @@ fn thread_safety_4byte_test() {
 fn thread_safety_8byte_test() {
     run_thread_safety_test(
         "src/hashing/fowler_noll_vo_1/.snapshots/fowler_noll_vo_1_8byte_snap.json",
-        hash_fnv1_x32_8byte_chunks,
-        hash_fnv1_x64_8byte_chunks,
+        fnv1_x32_8byte_chunks,
+        fnv1_x64_8byte_chunks,
         TEST_THREAD_COUNT,
     );
 }
@@ -49,8 +49,8 @@ fn thread_safety_8byte_test() {
 fn thread_safety_16byte_test() {
     run_thread_safety_test(
         "src/hashing/fowler_noll_vo_1/.snapshots/fowler_noll_vo_1_16byte_snap.json",
-        hash_fnv1_x32_16byte_chunks,
-        hash_fnv1_x64_16byte_chunks,
+        fnv1_x32_16byte_chunks,
+        fnv1_x64_16byte_chunks,
         TEST_THREAD_COUNT,
     );
 }
@@ -59,8 +59,8 @@ fn thread_safety_16byte_test() {
 fn thread_safety_32byte_test() {
     run_thread_safety_test(
         "src/hashing/fowler_noll_vo_1/.snapshots/fowler_noll_vo_1_32byte_snap.json",
-        hash_fnv1_x32_32byte_chunks,
-        hash_fnv1_x64_32byte_chunks,
+        fnv1_x32_32byte_chunks,
+        fnv1_x64_32byte_chunks,
         TEST_THREAD_COUNT,
     );
 }
@@ -69,8 +69,8 @@ fn thread_safety_32byte_test() {
 fn thread_safety_64byte_test() {
     run_thread_safety_test(
         "src/hashing/fowler_noll_vo_1/.snapshots/fowler_noll_vo_1_64byte_snap.json",
-        hash_fnv1_x32_32byte_chunks,
-        hash_fnv1_x64_64byte_chunks,
+        fnv1_x32_32byte_chunks,
+        fnv1_x64_64byte_chunks,
         TEST_THREAD_COUNT,
     );
 }

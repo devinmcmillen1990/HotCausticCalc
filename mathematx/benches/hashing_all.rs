@@ -1,0 +1,1 @@
+// TODO: benchmark comparisons between the best hashing algorithms

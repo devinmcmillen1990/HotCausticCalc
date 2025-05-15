@@ -1,10 +1,10 @@
 use super::fowler_noll_vo_1a_x32::{
-    hash_fnv1a_x32, hash_fnv1a_x32_16byte_chunks, hash_fnv1a_x32_32byte_chunks,
-    hash_fnv1a_x32_4byte_chunks, hash_fnv1a_x32_8byte_chunks,
+    fnv1a_x32, fnv1a_x32_16byte_chunks, fnv1a_x32_32byte_chunks,
+    fnv1a_x32_4byte_chunks, fnv1a_x32_8byte_chunks,
 };
 use super::fowler_noll_vo_1a_x64::{
-    hash_fnv1a_x64, hash_fnv1a_x64_16byte_chunks, hash_fnv1a_x64_32byte_chunks,
-    hash_fnv1a_x64_64byte_chunks, hash_fnv1a_x64_8byte_chunks,
+    fnv1a_x64, fnv1a_x64_16byte_chunks, fnv1a_x64_32byte_chunks,
+    fnv1a_x64_64byte_chunks, fnv1a_x64_8byte_chunks,
 };
 use crate::hashing::fowler_noll_vo_utils::fowler_noll_vo_test_assertions::run_hash_tests;
 
@@ -17,8 +17,8 @@ use crate::hashing::fowler_noll_vo_utils::fowler_noll_vo_test_assertions::run_ha
 fn run_base_tests() {
     run_hash_tests(
         "src/hashing/fowler_noll_vo_1/.snapshots/fowler_noll_vo_1_base_snap.json",
-        hash_fnv1a_x32,
-        hash_fnv1a_x64,
+        fnv1a_x32,
+        fnv1a_x64,
     );
 }
 
@@ -26,8 +26,8 @@ fn run_base_tests() {
 fn run_4byte_tests() {
     run_hash_tests(
         "src/hashing/fowler_noll_vo_1/.snapshots/fowler_noll_vo_1_4byte_snap.json",
-        hash_fnv1a_x32_4byte_chunks,
-        hash_fnv1a_x64, // No 4-byte function for 64-bit
+        fnv1a_x32_4byte_chunks,
+        fnv1a_x64, // No 4-byte function for 64-bit
     );
 }
 
@@ -35,8 +35,8 @@ fn run_4byte_tests() {
 fn run_8byte_tests() {
     run_hash_tests(
         "src/hashing/fowler_noll_vo_1/.snapshots/fowler_noll_vo_1_8byte_snap.json",
-        hash_fnv1a_x32_8byte_chunks,
-        hash_fnv1a_x64_8byte_chunks,
+        fnv1a_x32_8byte_chunks,
+        fnv1a_x64_8byte_chunks,
     );
 }
 
@@ -44,8 +44,8 @@ fn run_8byte_tests() {
 fn run_16byte_tests() {
     run_hash_tests(
         "src/hashing/fowler_noll_vo_1/.snapshots/fowler_noll_vo_1_16byte_snap.json",
-        hash_fnv1a_x32_16byte_chunks,
-        hash_fnv1a_x64_16byte_chunks,
+        fnv1a_x32_16byte_chunks,
+        fnv1a_x64_16byte_chunks,
     );
 }
 
@@ -53,8 +53,8 @@ fn run_16byte_tests() {
 fn run_32byte_tests() {
     run_hash_tests(
         "src/hashing/fowler_noll_vo_1/.snapshots/fowler_noll_vo_1_32byte_snap.json",
-        hash_fnv1a_x32_32byte_chunks,
-        hash_fnv1a_x64_32byte_chunks,
+        fnv1a_x32_32byte_chunks,
+        fnv1a_x64_32byte_chunks,
     );
 }
 
@@ -62,7 +62,7 @@ fn run_32byte_tests() {
 fn run_64byte_tests() {
     run_hash_tests(
         "src/hashing/fowler_noll_vo_1/.snapshots/fowler_noll_vo_1_64byte_snap.json",
-        hash_fnv1a_x32_32byte_chunks, // 32-byte function for 32-bit
-        hash_fnv1a_x64_64byte_chunks,
+        fnv1a_x32_32byte_chunks, // 32-byte function for 32-bit
+        fnv1a_x64_64byte_chunks,
     );
 }

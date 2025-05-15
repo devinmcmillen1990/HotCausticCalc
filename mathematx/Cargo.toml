@@ -13,3 +13,11 @@ serde_json = "1"
 [[bench]]
 name = "hashing_murmur3"
 harness = false
+
+[[bench]]
+name = "hashing_fnv1"
+harness = false
+
+[[bench]]
+name = "hashing_fnv1a"
+harness = false

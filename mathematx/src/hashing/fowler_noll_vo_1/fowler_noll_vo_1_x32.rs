@@ -21,7 +21,7 @@ use crate::{
 */
 
 /// Fowler-Noll-Vo 1 Hash (32-bit)
-pub fn hash_fnv1_x32(data: &[u8]) -> u32 {
+pub fn fnv1_x32(data: &[u8]) -> u32 {
     if data.is_empty() {
         return FNV_X32_OFFSET_BASIS;
     }
@@ -42,7 +42,7 @@ pub fn hash_fnv1_x32(data: &[u8]) -> u32 {
 }
 
 /// Fowler-Noll-Vo 1 Hash (32-bit/4 Byte chunks)
-pub fn hash_fnv1_x32_4byte_chunks(data: &[u8]) -> u32 {
+pub fn fnv1_x32_4byte_chunks(data: &[u8]) -> u32 {
     if data.is_empty() {
         return FNV_X32_OFFSET_BASIS;
     }
@@ -52,7 +52,7 @@ pub fn hash_fnv1_x32_4byte_chunks(data: &[u8]) -> u32 {
 }
 
 /// Fowler-Noll-Vo 1 Hash (32-bit/8 Byte chunks)
-pub fn hash_fnv1_x32_8byte_chunks(data: &[u8]) -> u32 {
+pub fn fnv1_x32_8byte_chunks(data: &[u8]) -> u32 {
     if data.is_empty() {
         return FNV_X32_OFFSET_BASIS;
     }
@@ -63,7 +63,7 @@ pub fn hash_fnv1_x32_8byte_chunks(data: &[u8]) -> u32 {
 }
 
 /// Fowler-Noll-Vo 1 Hash (32-bit/16 Byte chunks)
-pub fn hash_fnv1_x32_16byte_chunks(data: &[u8]) -> u32 {
+pub fn fnv1_x32_16byte_chunks(data: &[u8]) -> u32 {
     if data.is_empty() {
         return FNV_X32_OFFSET_BASIS;
     }
@@ -74,7 +74,7 @@ pub fn hash_fnv1_x32_16byte_chunks(data: &[u8]) -> u32 {
 }
 
 /// Fowler-Noll-Vo 1 Hash (32-bit/32 Byte chunks)
-pub fn hash_fnv1_x32_32byte_chunks(data: &[u8]) -> u32 {
+pub fn fnv1_x32_32byte_chunks(data: &[u8]) -> u32 {
     if data.is_empty() {
         return FNV_X32_OFFSET_BASIS;
     }

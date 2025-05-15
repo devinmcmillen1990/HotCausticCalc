@@ -1,5 +1,13 @@
 use super::murmur3_constants::{C1_64, C2_64, M_64, N_64, R1_64, R2_64};
 
+/*
+Bench Results
+
+The 64-bit chunk sizes exhibit a more pronounced drop in execution time, with the 8-byte chunk size being slightly slower than the 64-byte chunk size.
+
+    This is expected as 64-byte processing leverages more data per iteration, reducing the number of loop cycles and 
+    increasing cache efficiency.
+*/
 #[inline(always)]
 pub fn murmur3_x64_hash(data: &[u8], seed: u64, byte_size: usize) -> u64 {
     if data.is_empty() {
@@ -21,6 +29,7 @@ pub fn murmur3_x64_hash(data: &[u8], seed: u64, byte_size: usize) -> u64 {
 fn process_chunks(byte_size: usize, hash: &mut u64, chunks: std::slice::ChunksExact<'_, u8>) {
     let num_chunks = byte_size / 8;
 
+    // TODO: 
     for chunk in chunks {
         for i in 0..num_chunks {
             let start = i * 8;

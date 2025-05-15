@@ -1,5 +1,24 @@
 use super::murmur3_constants::{C1_32, C2_32, M_32, N_32, R1_32, R2_32};
 
+/*
+Bench Results
+
+The 32-bit chunk sizes show minimal variance in execution time, ranging from approximately 2.95 ms to 3.02 ms, regardless of the chunk size (4, 8, 16, 32 bytes).
+
+    This suggests that the overhead of managing smaller chunks is not being mitigated effectively.
+
+    We should expect 16-byte and 32-byte chunk sizes to outperform 4-byte and 8-byte chunk sizes, but that is not 
+    clearly evident here.
+
+
+32-bit Processing Analysis:
+    The performance across all chunk sizes is quite close, suggesting a bottleneck:
+
+        The process_chunks function might not be fully optimized to leverage the larger chunk sizes effectively.
+
+        Potential optimization: Apply loop unrolling or SIMD instructions to maximize throughput for larger chunks.
+*/
+
 #[inline(always)]
 pub fn murmur3_x32_hash(data: &[u8], seed: u32, byte_size: usize) -> u32 {
     if data.is_empty() {

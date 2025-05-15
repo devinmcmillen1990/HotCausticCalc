@@ -1,0 +1,50 @@
+[
+    {
+        "title": "hash Empty Input",
+        "input": "",
+        "expected_32bit": 2538058380,
+        "expected_64bit": 14695981039346656037
+    },
+    {
+        "title": "hash Simple String",
+        "input": "Hello",
+        "expected_32bit": 3135460308,
+        "expected_64bit": 17047679937241198093
+    },
+    {
+        "title": "hash Medium Input",
+        "input": "The quick brown fox jumps over the lazy dog. And Ate an entire fish head.",
+        "expected_32bit": 935969963,
+        "expected_64bit": 8291863110314523863
+    },
+    {
+        "title": "hash Repeated Characters",
+        "input": "aaaaaa",
+        "expected_32bit": 1843596099,
+        "expected_64bit": 3904575194463525282
+    },
+    {
+        "title": "hash Numeric Data (32-bit Integer)",
+        "input": "1234567890",
+        "expected_32bit": 731487136,
+        "expected_64bit": 18300324600757942155
+    },
+    {
+        "title": "hash Numeric Data (64-bit Integer)",
+        "input": "98765432109876543210",
+        "expected_32bit": 4233264036,
+        "expected_64bit": 15996317181908911345
+    },
+    {
+        "title": "hash Collision Example 1",
+        "input": "a",
+        "expected_32bit": 2141232806,
+        "expected_64bit": 1525047453075598927
+    },
+    {
+        "title": "hash Collision Example 2",
+        "input": "A",
+        "expected_32bit": 644542747,
+        "expected_64bit": 7813558941438359127
+    }
+]

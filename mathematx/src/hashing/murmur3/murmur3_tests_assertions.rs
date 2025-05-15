@@ -37,7 +37,6 @@ pub fn run_murmur3_hash_tests(
     }
 }
 
-/// Run MurmurHash3 thread safety tests for both 32-bit and 64-bit versions.
 #[cfg(test)]
 pub fn run_murmur3_thread_safety_test(
     snapshot_path: &str,

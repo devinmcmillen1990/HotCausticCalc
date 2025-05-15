@@ -53,6 +53,10 @@ fn process_remainder(hash: &mut u64, remainder: &[u8]) {
     let mut tail: u64 = 0;
 
     for (i, &byte) in remainder.iter().enumerate() {
+        if i >= 8 {
+            break;
+        }
+        
         tail |= (byte as u64) << (i * 8);
     }
 

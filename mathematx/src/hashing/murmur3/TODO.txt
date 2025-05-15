@@ -5,5 +5,4 @@
 2. Implement Memory Prefetching:
     Ensure that data is prefetched into the cache, especially for the 64-byte processing loop.
 
-3. Parallel Processing for Large Datasets:
-    Implement a multi-threaded version of the Murmur3 hashing function for large datasets to leverage multiple CPU cores.
+3. SIMD

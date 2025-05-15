@@ -1,3 +1,5 @@
+use std::arch::x86_64::_mm_prefetch;
+
 use super::murmur3_constants::{C1_32, C2_32, M_32, N_32, R1_32, R2_32};
 
 /*
@@ -43,6 +45,10 @@ fn process_chunks(byte_size: usize, hash: &mut u32, chunks: std::slice::ChunksEx
     for chunk in chunks {
         for i in 0..num_chunks {
             let start = i * 4;
+
+            if byte_size >= 16 {
+                unsafe { _mm_prefetch(chunk.as_ptr().add(start) as *const i8, 0) };
+            }
 
             let byte_chunk = u32::from_le_bytes([
                 chunk[start],

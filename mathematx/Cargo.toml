@@ -9,3 +9,7 @@ rayon = "1.5"
 
 [dev-dependencies]
 serde_json = "1"
+
+[[bench]]
+name = "hashing_murmur3"
+harness = false
